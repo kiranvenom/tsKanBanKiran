@@ -1,3 +1,4 @@
+import popUpColors from '@/data/popUpColor';
 import { TaskType } from '@/types/interfaceTypes';
 import { MdEditNote } from 'react-icons/md';
 import { MdOutlineDeleteOutline } from 'react-icons/md';
@@ -16,11 +17,22 @@ const TaskList = ({ task }: TaskListProps) => {
 					<MdOutlineDeleteOutline color='black' cursor={'pointer'} />
 				</div>
 			</li>
-			<p className='mt-0 absolute top-0 left-0 bg-blue-500 w-[80px] z-[-1] rounded-md flex justify-center items-center capitalize group-hover:top-[-2%] group-hover:z-[1] transition-all'>
+			<p
+				style={{
+					backgroundColor: popUpColors[task.priorityLevel],
+				}}
+				className='mt-0 absolute top-0 left-1/2 text-white w-[80px] z-[-1] rounded-md flex justify-center items-center capitalize group-hover:top-[-10%] group-hover:z-[1] transition-all'>
 				{task.priorityLevel}
 			</p>
+			<div
+				style={{
+					backgroundColor: popUpColors[task.priorityLevel],
+				}}
+				className='w-[5px] h-[5px] rounded-full absolute top-1 right-1'></div>
 		</div>
 	);
 };
 
 export default TaskList;
+
+// style={{backgroundColor: safetyColors[p.safetyZone],}}
