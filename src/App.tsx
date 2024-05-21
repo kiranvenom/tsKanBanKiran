@@ -43,6 +43,13 @@ const App: React.FC = () => {
 		}
 	};
 
+	const handleDelete = (taskName: string) => {
+		const filteredTasks = (tasks ?? []).filter(
+			(task) => task.taskName !== taskName,
+		);
+		setTasks(filteredTasks);
+	};
+
 	return (
 		<div className='max-w-[1200px] m-auto'>
 			<InputComp
@@ -53,8 +60,9 @@ const App: React.FC = () => {
 			/>
 			<div className='flex justify-between'>
 				<TaskBoard
+					onDelete={handleDelete}
 					heading='Task'
-					tasks={tasks !== null ? tasks : undefined}
+					tasks={tasks || []}
 				/>
 				<TaskBoard heading='Ongoing' />
 				<TaskBoard heading='Completed' />

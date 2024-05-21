@@ -5,16 +5,21 @@ import { MdOutlineDeleteOutline } from 'react-icons/md';
 
 type TaskListProps = {
 	task: TaskType;
+	onDelete?: (taskName: string) => void;
 };
 
-const TaskList = ({ task }: TaskListProps) => {
+const TaskList = ({ task, onDelete }: TaskListProps) => {
 	return (
 		<div className='relative group'>
 			<li className='font-semibold text-xl capitalize bg-slate-200 my-2 p-2 rounded-md text-slate-500 flex items-center justify-between border border-slate-400'>
 				<h4 className='break-after-50ch'>{task.taskName}</h4>
 				<div className='flex items-center gap-2'>
 					<MdEditNote color='black' cursor={'pointer'} />
-					<MdOutlineDeleteOutline color='black' cursor={'pointer'} />
+					<MdOutlineDeleteOutline
+						onClick={() => onDelete && onDelete(task.taskName)}
+						color='black'
+						cursor={'pointer'}
+					/>
 				</div>
 			</li>
 			<p
@@ -34,5 +39,3 @@ const TaskList = ({ task }: TaskListProps) => {
 };
 
 export default TaskList;
-
-// style={{backgroundColor: safetyColors[p.safetyZone],}}

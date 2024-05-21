@@ -27,17 +27,17 @@ const InputComp: React.FC<InputCompProps> = ({
 					value={taskType.taskName}
 					className='mt-0 placeholder:select-none border border-slate-400'
 				/>
+
 				<select
 					value={taskType.priorityLevel}
-					className='border border-slate-400 rounded-md'
-					defaultValue={''}
+					className='border border-slate-400 rounded-md px-4'
 					onChange={handleOnSelect}>
 					<option disabled value=''>
 						Priority
 					</option>
 					<option value='high'>High</option>
 					<option value='medium'>Medium</option>
-					<option value='low'>low</option>
+					<option value='low'>Low</option>
 				</select>
 
 				<Button

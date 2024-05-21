@@ -5,9 +5,10 @@ import TaskList from '@/components/customComp/taskBoard/TaskList';
 type TaskBoardProps = {
 	heading: string;
 	tasks?: TaskType[];
+	onDelete?: (taskName: string) => void;
 };
 
-const TaskBoard = ({ heading, tasks }: TaskBoardProps) => {
+const TaskBoard = ({ heading, tasks, onDelete }: TaskBoardProps) => {
 	return (
 		<>
 			<div>
@@ -15,7 +16,13 @@ const TaskBoard = ({ heading, tasks }: TaskBoardProps) => {
 				<ScrollArea className='h-[70vh] w-[25vw] rounded-md border border-slate-500'>
 					<ul className='p-2 mt-4'>
 						{tasks?.map((task, idx) => {
-							return <TaskList key={idx} task={task} />;
+							return (
+								<TaskList
+									onDelete={onDelete}
+									key={idx}
+									task={task}
+								/>
+							);
 						})}
 					</ul>
 				</ScrollArea>
